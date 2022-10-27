@@ -1,17 +1,42 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+  <app-button-log-o></app-button-log-o>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div *ngIf="loading" class="spinner-border text-primary loading" role="status"></div>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let usuarios of usuarios">
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Información</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="text-center" size="4">
+                <img [src]="usuarios.img" />
+              </ion-col>
+              <ion-col size="8">
+                <ion-label>
+                  <h2>UserName:</h2>
+                  <p>{{usuarios.username}}</p>
+                  <h2>Phone:</h2>
+                  <p>{{usuarios.phone}}</p>
+                  <h2>Email:</h2>
+                  <p>{{usuarios.email}}</p>
+                  <h2>Dirección:</h2>
+                  <p>{{usuarios.address.city}}</p>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
